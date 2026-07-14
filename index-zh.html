@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成永恩 | 作品集</title>
+<style>
+  :root{
+    --bg: #FAF8EE;
+    --bg-soft: #EDE8C9;
+    --text: #33341F;
+    --text-dim: #6E6E4E;
+    --accent: #7C8A4B;
+    --accent2: #7C8A4B;
+    --border: #DBD3A0;
+    --max-width: 1080px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.7;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display: block; }
+
+  .container{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header{
+    position: sticky;
+    top: 0;
+    background: rgba(250,248,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .header-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lang-switch{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .lang-switch a{ color: var(--text-dim); }
+  .lang-switch a:hover{ color: var(--text); }
+  .lang-switch .current{ color: var(--accent); font-weight: 700; }
+
+  .logo{
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  nav{
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar{ display: none; }
+
+  nav ul{
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    white-space: nowrap;
+  }
+
+  nav a{
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover{ color: var(--text); }
+
+  /* Hero */
+  .hero{
+    padding: 140px 0 90px;
+  }
+
+  .hero-inner{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .profile-img{
+    width: 190px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  }
+
+  .hero .eyebrow{
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .hero h1{
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub{
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 20px;
+    min-height: 1.6em;
+  }
+
+  .hero-sub .cursor{
+    display: inline-block;
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  .hero p.hero-desc{
+    max-width: 600px;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+  }
+
+  .btn-group{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary{
+    background: var(--accent);
+    color: #FAF8EE;
+  }
+
+  .btn-primary:hover{ opacity: 0.85; }
+
+  .btn-secondary{
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover{ border-color: var(--text-dim); }
+
+  /* Section common */
+  section{
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-title{
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .section-heading{
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+
+  /* About / summary card */
+  .about-content{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-content p{
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .info-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .info-card h3{
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .info-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .info-row:last-child{ border-bottom: none; }
+
+  .info-row span:first-child{ color: var(--text-dim); }
+
+  .skill-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .skill-tag{
+    padding: 6px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  /* Timeline (education / career / overseas) */
+  .timeline{
+    position: relative;
+    padding-left: 28px;
+    border-left: 2px solid var(--border);
+  }
+
+  .timeline-item{
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .timeline-item:last-child{ margin-bottom: 0; }
+
+  .timeline-item::before{
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .timeline-date{
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .timeline-item h3{
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item .org{
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .timeline-item ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .timeline-item li{
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .timeline-item li::before{
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .badge-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .badge{
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: rgba(124, 138, 75, 0.14);
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+
+  /* Simple two-col grid for certificates */
+  .grid-2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* Project cards */
+  .project-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .project-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .project-thumb{
+    height: 140px;
+    background: linear-gradient(135deg, #E3DCA8, #EDE8C9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6E6E4E;
+    font-size: 0.85rem;
+  }
+
+  .project-body{
+    padding: 20px;
+  }
+
+  .project-body h3{
+    font-size: 1.02rem;
+    margin-bottom: 8px;
+  }
+
+  .project-body p{
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    margin-bottom: 14px;
+  }
+
+  .project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .project-tags span{
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(124, 138, 75, 0.14);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .project-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .project-link:hover{ text-decoration: underline; }
+
+  .simple-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+
+  .simple-card .timeline-date{ margin-bottom: 8px; }
+
+  .simple-card h3{
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .simple-card p{
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* Self-intro */
+  .intro-block{
+    max-width: 760px;
+  }
+
+  .intro-block h3{
+    font-size: 1.05rem;
+    color: var(--accent);
+    margin: 28px 0 10px;
+  }
+
+  .intro-block h3:first-child{ margin-top: 0; }
+
+  .intro-block p{
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  /* Portfolio link */
+  .portfolio-box{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .portfolio-box .label{
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .portfolio-box .link{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .portfolio-box .link:hover{ color: var(--accent); }
+
+  /* Contact */
+  .contact-content{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-list{
+    list-style: none;
+  }
+
+  .contact-list li{
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+  }
+
+  .contact-list li span:first-child{
+    color: var(--text-dim);
+  }
+
+  .contact-list a:hover{ color: var(--accent); }
+
+  /* Footer */
+  footer{
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px){
+    nav ul{ gap: 14px; }
+    nav a{ font-size: 0.78rem; }
+    .about-content{ grid-template-columns: 1fr; }
+    .hero{ padding: 100px 0 60px; }
+    section{ padding: 60px 0; }
+    .hero-inner{ grid-template-columns: 1fr; }
+    .hero-inner .profile-img{ order: -1; width: 140px; height: 178px; }
+    .header-right{ gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">成永恩</div>
+    <div class="header-right">
+      <nav>
+        <ul>
+          <li><a href="#about">简介</a></li>
+          <li><a href="#education">学历</a></li>
+          <li><a href="#overseas">海外经历</a></li>
+          <li><a href="#career">工作经历</a></li>
+          <li><a href="#projects">项目</a></li>
+          <li><a href="#certificates">证书</a></li>
+          <li><a href="#intro">自我介绍</a></li>
+          <li><a href="#contact">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch">
+        <a href="index.html">KO</a><span>·</span><a href="index-en.html">EN</a><span>·</span><span class="current">中</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Hello, I'm</div>
+        <h1>成永恩</h1>
+        <div class="hero-sub"><span id="typing"></span><span class="cursor">|</span></div>
+        <p class="hero-desc">凭借中国学专业背景与6个月的企业实习经验，<br>我在产业趋势调研到人事行政等多个领域积累了实务经验。<br>准确的信息整理能力与三国语言沟通能力是我的核心优势。</p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">查看项目</a>
+          <a href="#contact" class="btn btn-secondary">联系我</a>
+        </div>
+      </div>
+      <img src="profile.jpg" alt="成永恩 个人照片" class="profile-img" />
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title">About</div>
+    <h2 class="section-heading">简介</h2>
+    <div class="about-content">
+      <div>
+        <p>我在大学主修中国学，打下了扎实的语言专业基础，毕业前后完成了6个月的企业实习，<br>积累了实务调研与行政支持能力。通过将AI产业趋势整理为公司内部资产的实务经验，<br>我同时培养了商业敏感度与文档管理能力。</p>
+        <p>我喜欢快速学习陌生领域并整理出核心要点。<br>我的优势不仅在于收集数据，更在于将其转化为对团队<br>真正有帮助的成果。</p>
+        <div class="skill-list">
+          <span class="skill-tag">中文 (新HSK5级)</span>
+          <span class="skill-tag">产业调研</span>
+          <span class="skill-tag">人事行政</span> 
+          <span style="flex-basis:100%; height:0;"></span>
+          <span class="skill-tag">三国语言术语库构建</span>
+          <span class="skill-tag">研讨会发表</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>个人信息</h3>
+        <div class="info-row"><span>姓名</span><span>成永恩</span></div>
+        <div class="info-row"><span>性别 / 年龄</span><span>女 · 2003年出生（23岁）</span></div>
+        <div class="info-row"><span>邮箱</span><span>sye030220@gmail.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-title">Education</div>
+    <h2 class="section-heading">学历</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2022.03 — 2026.02</div>
+        <h3>顺天乡大学</h3>
+        <div class="org">中国学专业 · 本科毕业 · GPA 3.3 / 4.5</div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="overseas">
+  <div class="container">
+    <div class="section-title">Overseas Experience</div>
+    <h2 class="section-heading">海外经历</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2023.09 — 2024.07 · 11个月</div>
+        <h3>天津师范大学</h3>
+        <ul>
+          <li>在中国交换留学1年，HSK从4级提升至5级</li>
+          <li>与当地学生及留学生积极交流，切实提升了口语实力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="career">
+  <div class="container">
+    <div class="section-title">Career</div>
+    <h2 class="section-heading">工作经历（共6个月）</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026.01 — 2026.07 · 6个月</div>
+        <h3>DNT（Digital Network & Technology Co., Ltd.）</h3>
+        <div class="org">行政支持部 → 人事总务部 · 实习生（组员）· 主要职责：人事行政</div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="projects">
+  <div class="container">
+    <div class="section-title">Work</div>
+    <h2 class="section-heading">项目</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>基于RSS的产业趋势监测</h3>
+          <p>利用RSS订阅系统每日收集全球商业与技术动态。在海量信息中筛选出对实务<br>有价值的内容，锻炼了分析能力。</p>
+          <div class="project-tags">
+            <span>调研</span>
+            <span>趋势监测</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/spreadsheets/d/1iQITC8qZdMsTfs4niBaJYhSFLSA-cRdtAvrdCEN7kTQ/edit?usp=sharing" target="_blank" rel="noopener">查看成果 →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>三国语言商务术语库构建</h3>
+          <p>亲自构建并管理韩·英·中三国语言的<br>商务及技术专业术语表，<br>提升了公司内部沟通的<br>准确性。</p>
+          <div class="project-tags">
+            <span>术语库</span>
+            <span>三语种</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/spreadsheets/d/1SxtUKLyTalcmJz76RCT2Th15NwTeKPXhB2GyQHL4y2g/edit?usp=sharing" target="_blank" rel="noopener">查看成果 →</a>
+        </div>
+      </div>
+<br>
+      <div class="project-card">
+        <div class="project-body">
+          <h3>产业展会现场调研</h3>
+          <p>共4次实地走访COEX等国内主要产业展会，<br>现场收集市场数据，<br>并系统整理企业信息。4次参与中<br>有2次留有发表资料，现附上供参考。</p>
+          <div class="project-tags">
+            <span>现场调研</span>
+            <span>市场数据</span>
+          </div>
+          <a class="project-link" href="https://drive.google.com/drive/folders/1hYwlpAJfiiE75O-obPBSHu4JlM7auuSc?usp=drive_link" target="_blank" rel="noopener">查看成果（2件）→</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>公司内部研究研讨会及发表</h3>
+          <p>针对AI基础设施、半导体产业等主题<br>进行深入调研，制作报告与发表资料，<br>共在5次公司内部研讨会上进行发表。</p>
+          <div class="project-tags">
+            <span>深度调研</span>
+            <span>发表</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/document/d/1zbyfvOcT3IRI76YVISKRnalNe4CwpdH64qLY6hQmCdg/edit?usp=sharing" target="_blank" rel="noopener">查看成果 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="container">
+    <div class="section-title">Certificates & Language</div>
+    <h2 class="section-heading">证书 · 语言能力</h2>
+    <div class="grid-2">
+      <div class="simple-card">
+        <div class="timeline-date">2024.05</div>
+        <h3>新HSK 5级</h3>
+        <p>韩国HSK考试委员会</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="container">
+    <div class="section-title">Self-Introduction</div>
+    <h2 class="section-heading">自我介绍</h2>
+    <div class="intro-block">
+      <h3>成长过程与能力</h3>
+      <p>我在大学主修中国学，打下了扎实的语言专业基础，毕业前后完成了6个月的企业实习，锻炼了实务调研与行政支持能力。我没有止步于学术知识，而是通过将AI产业趋势整理为公司内部资产的实务经验，同时培养了商业敏感度与文档管理能力。</p>
+
+      <h3>主要工作成果</h3>
+      <p>在DNT公司的行政支持部与人事总务部工作期间，我在三个方面取得了成果。第一，通过RSS系统每日监测全球动态，培养了从海量信息中筛选有效内容的分析能力。第二，亲自构建并管理韩·英·中三国语言的商务专业术语库，提升了公司内部沟通的准确性。第三，共4次实地走访COEX等主要产业展会进行现场调研，系统整理企业数据，并基于对AI基础设施、半导体产业等5个主题的深入调研，成功完成了5次公司内部研讨会发表。在部门调动过程中，也迅速熟悉并支持了多样化的行政与总务工作流程。</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title">Portfolio</div>
+    <h2 class="section-heading">作品集 · 求职意向</h2>
+
+    <div class="portfolio-box" style="margin-bottom: 32px;">
+      <div>
+        <div class="label">附属作品集</div>
+        <a class="link" href="https://enna999.kro.kr" target="_blank">enna999.kro.kr</a>
+      </div>
+      <a href="https://enna999.kro.kr" target="_blank" class="btn btn-secondary">前往网站</a>
+    </div>
+
+    <div class="grid-2">
+      <div class="simple-card">
+        <h3>求职意向</h3>
+        <p>期望工作地区：首尔全区、京畿道全区<br>期望薪资：面议</p>
+      </div>
+      <div class="simple-card">
+        <h3>应聘领域</h3>
+        <p>人事专员（人事行政）<br>调研与分析（市场调查、市场分析）<br>海外营业（中文）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title">Contact</div>
+    <h2 class="section-heading">联系方式</h2>
+    <div class="contact-content">
+      <ul class="contact-list">
+        <li><span>邮箱</span><a href="mailto:sye030220@gmail.com">sye030220@gmail.com</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/영은-성-1391203b3" target="_blank" rel="noopener">linkedin.com/in/영은-성</a></li>
+        <li><span>作品集</span><a href="https://enna999.kro.kr" target="_blank">enna999.kro.kr</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2026 成永恩. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const titles = ['具备全球调研能力的中文专业人才', '人事专员 · 人事行政', '调研与市场分析', '海外营业 · 中文'];
+  let ti = 0, ci = 0, deleting = false;
+  const typingEl = document.getElementById('typing');
+
+  function typeLoop(){
+    const cur = titles[ti];
+    if(!deleting){
+      typingEl.textContent = cur.slice(0, ++ci);
+      if(ci === cur.length){ deleting = true; setTimeout(typeLoop, 1800); return; }
+    } else {
+      typingEl.textContent = cur.slice(0, --ci);
+      if(ci === 0){ deleting = false; ti = (ti + 1) % titles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 35 : 70);
+  }
+  typeLoop();
+</script>
+</body>
+</html>
