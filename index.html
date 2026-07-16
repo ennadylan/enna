@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>성영은 | 포트폴리오</title>
+<style>
+  :root{
+    --bg: #FAF8EE;
+    --bg-soft: #EDE8C9;
+    --text: #33341F;
+    --text-dim: #6E6E4E;
+    --accent: #7C8A4B;
+    --accent2: #7C8A4B;
+    --border: #DBD3A0;
+    --max-width: 1080px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.7;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display: block; }
+
+  .container{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header{
+    position: sticky;
+    top: 0;
+    background: rgba(250,248,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    flex-wrap: nowrap;
+  }
+
+  .header-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .lang-switch{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .lang-switch a{ color: var(--text-dim); }
+  .lang-switch a:hover{ color: var(--text); }
+  .lang-switch .current{ color: var(--accent); font-weight: 700; }
+
+  .logo{
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  nav{
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+  }
+  nav::-webkit-scrollbar{ display: none; }
+
+  nav ul{
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    white-space: nowrap;
+  }
+
+  nav a{
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover{ color: var(--text); }
+
+  /* Hero */
+  .hero{
+    padding: 140px 0 90px;
+  }
+
+  .hero-inner{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .profile-img{
+    width: 190px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  }
+
+  .hero .eyebrow{
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .hero h1{
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub{
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 20px;
+    min-height: 1.6em;
+  }
+
+  .hero-sub .cursor{
+    display: inline-block;
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  .hero p.hero-desc{
+    max-width: 600px;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+  }
+
+  .btn-group{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary{
+    background: var(--accent);
+    color: #FAF8EE;
+  }
+
+  .btn-primary:hover{ opacity: 0.85; }
+
+  .btn-secondary{
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover{ border-color: var(--text-dim); }
+
+  /* Section common */
+  section{
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-title{
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .section-heading{
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+
+  /* About / summary card */
+  .about-content{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-content p{
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .info-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .info-card h3{
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .info-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .info-row:last-child{ border-bottom: none; }
+
+  .info-row span:first-child{ color: var(--text-dim); }
+
+  .skill-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .skill-tag{
+    padding: 6px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  /* Timeline (education / career / overseas) */
+  .timeline{
+    position: relative;
+    padding-left: 28px;
+    border-left: 2px solid var(--border);
+  }
+
+  .timeline-item{
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .timeline-item:last-child{ margin-bottom: 0; }
+
+  .timeline-item::before{
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .timeline-date{
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .timeline-item h3{
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item .org{
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .timeline-item ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .timeline-item li{
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .timeline-item li::before{
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .badge-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .badge{
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: rgba(124, 138, 75, 0.14);
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+
+  /* Simple two-col grid for certificates */
+  .grid-2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* Project cards */
+  .project-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .project-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .project-thumb{
+    height: 140px;
+    background: linear-gradient(135deg, #E3DCA8, #EDE8C9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6E6E4E;
+    font-size: 0.85rem;
+  }
+
+  .project-body{
+    padding: 20px;
+  }
+
+  .project-body h3{
+    font-size: 1.02rem;
+    margin-bottom: 8px;
+  }
+
+  .project-body p{
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    margin-bottom: 14px;
+  }
+
+  .project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .project-tags span{
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(124, 138, 75, 0.14);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .project-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .project-link:hover{ text-decoration: underline; }
+
+  .simple-card{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+
+  .simple-card .timeline-date{ margin-bottom: 8px; }
+
+  .simple-card h3{
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+
+  .simple-card p{
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* Self-intro */
+  .intro-block{
+    max-width: 760px;
+  }
+
+  .intro-block h3{
+    font-size: 1.05rem;
+    color: var(--accent);
+    margin: 28px 0 10px;
+  }
+
+  .intro-block h3:first-child{ margin-top: 0; }
+
+  .intro-block p{
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  /* Portfolio link */
+  .portfolio-box{
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .portfolio-box .label{
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .portfolio-box .link{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .portfolio-box .link:hover{ color: var(--accent); }
+
+  /* Contact */
+  .contact-content{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-list{
+    list-style: none;
+  }
+
+  .contact-list li{
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+  }
+
+  .contact-list li span:first-child{
+    color: var(--text-dim);
+  }
+
+  .contact-list a:hover{ color: var(--accent); }
+
+  /* Footer */
+  footer{
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px){
+    nav ul{ gap: 14px; }
+    nav a{ font-size: 0.78rem; }
+    .about-content{ grid-template-columns: 1fr; }
+    .hero{ padding: 100px 0 60px; }
+    section{ padding: 60px 0; }
+    .hero-inner{ grid-template-columns: 1fr; }
+    .hero-inner .profile-img{ order: -1; width: 140px; height: 178px; }
+    .header-right{ gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">성영은</div>
+    <div class="header-right">
+      <nav>
+        <ul>
+          <li><a href="#about">소개</a></li>
+          <li><a href="#education">학력</a></li>
+          <li><a href="#overseas">해외경험</a></li>
+          <li><a href="#career">경력</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#certificates">자격증</a></li>
+          <li><a href="#intro">자기소개서</a></li>
+          <li><a href="#contact">연락처</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch">
+        <span class="current">KO</span><span>·</span><a href="index-en.html">EN</a><span>·</span><a href="index-zh.html">中</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Hello, I'm</div>
+        <h1>성영은</h1>
+        <div class="hero-sub"><span id="typing"></span><span class="cursor">|</span></div>
+        <p class="hero-desc">중국학 전공과 6개월간의 실무 인턴십을 바탕으로, <br>산업 트렌드 리서치부터 인사행정 실무까지 폭넓게 경험했습니다. <br>정확한 정보 정리와 3개국어 커뮤니케이션 능력을 강점으로 가지고 있습니다.</p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-secondary">연락하기</a>
+        </div>
+      </div>
+      <img src="profile.jpg" alt="성영은 프로필" class="profile-img" />
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title">About</div>
+    <h2 class="section-heading">소개</h2>
+    <div class="about-content">
+      <div>
+        <p>대학에서 중국학을 전공하며 언어적 전문성을 탄탄히 다졌고, 졸업 전후로 6개월간 기업 인턴십을 수행하며 실무 리서치와 행정 역량을 키웠습니다. <br>AI 산업 트렌드를 읽어내 사내 자산으로 정리하는 실무를 경험하며 <br>비즈니스 감각과 문서 관리 능력을 함께 키웠습니다.</p>
+        <p>낯선 분야도 빠르게 학습해서 핵심을 정리하는 것을 좋아합니다. <br>데이터를 모으는 데서 그치지 않고, 팀에 실제로 도움이 되는 결과물로 <br>만드는 과정에 강점이 있습니다.</p>
+        <div class="skill-list">
+          <span class="skill-tag">중국어 (HSK5급)</span>
+          <span class="skill-tag">산업 리서치</span>
+          <span class="skill-tag">인사행정</span> 
+          <span style="flex-basis:100%; height:0;"></span>
+          <span class="skill-tag">3개국어 Glossary 구축</span>
+          <span class="skill-tag">세미나 발표</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>인적사항</h3>
+        <div class="info-row"><span>이름</span><span>성영은</span></div>
+        <div class="info-row"><span>성별 / 나이</span><span>여 · 2003년생 (만 23세)</span></div>
+        <div class="info-row"><span>이메일</span><span>sye030220@gmail.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-title">Education</div>
+    <h2 class="section-heading">학력</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2022.03 — 2026.02</div>
+        <h3>순천향대학교</h3>
+        <div class="org">중국학과 · 학사 졸업 · 학점 3.3 / 4.5</div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="overseas">
+  <div class="container">
+    <div class="section-title">Overseas Experience</div>
+    <h2 class="section-heading">해외경험</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2023.09 — 2024.07 · 11개월</div>
+        <h3>톈진사범대학교</h3>
+        <ul>
+          <li>중국 교환학생 1년, HSK 4급 → 5급 취득</li>
+          <li>현지인·유학생과 교류하며 회화 실력을 실질적으로 향상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="career">
+  <div class="container">
+    <div class="section-title">Career</div>
+    <h2 class="section-heading">경력 (총 6개월)</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026.01 — 2026.07 · 6개월</div>
+        <h3>㈜디지털네트웍앤테크놀러지</h3>
+        <div class="org">행정지원팀 → 인사총무팀 · 인턴(팀원) · 주요직무: 인사행정</div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="projects">
+  <div class="container">
+    <div class="section-title">Work</div>
+    <h2 class="section-heading">프로젝트</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>RSS 기반 산업 트렌드 모니터링</h3>
+          <p>RSS 피드 시스템을 활용해 글로벌 비즈니스·기술 동향을 매일 수집하고 스크랩했습니다. 방대한 정보 중 실무에 유의미한 내용을 <br>선별하는 분석력을 키웠습니다.</p>
+          <div class="project-tags">
+            <span>Research</span>
+            <span>Trend Monitoring</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/spreadsheets/d/1iQITC8qZdMsTfs4niBaJYhSFLSA-cRdtAvrdCEN7kTQ/edit?usp=sharing" target="_blank" rel="noopener">결과물 보기 →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>3개국어 비즈니스 용어 사전 구축</h3>
+          <p>한·영·중 3개국어로 비즈니스·기술 전문 <br>용어집을 직접 구축하고 마스터 시트로 <br>관리하며 사내 커뮤니케이션의 정확도를 <br>높이는 데 기여했습니다.</p>
+          <div class="project-tags">
+            <span>Glossary</span>
+            <span>Trilingual</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/spreadsheets/d/1SxtUKLyTalcmJz76RCT2Th15NwTeKPXhB2GyQHL4y2g/edit?usp=sharing" target="_blank" rel="noopener">결과물 보기 →</a>
+        </div>
+      </div>
+<br>
+      <div class="project-card">
+        <div class="project-body">
+          <h3>산업 전시회 현장 리서치</h3>
+          <p>COEX 등 국내 주요 산업 전시회를 총 4회 <br>방문해 현장에서 시장 데이터를 수집하고, <br>기업 정보를 체계적으로 분류·정리했습니다. <br>참여 4회 중 발표자료로 남은 2건을 첨부합니다.</p>
+          <div class="project-tags">
+            <span>Field Research</span>
+            <span>Market Data</span>
+          </div>
+          <a class="project-link" href="https://drive.google.com/drive/folders/1hYwlpAJfiiE75O-obPBSHu4JlM7auuSc?usp=drive_link" target="_blank" rel="noopener">결과물 보기 (2건) →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
+          <h3>사내 연구 세미나 리서치 및 발표</h3>
+          <p>AI 인프라, 반도체 산업 등에 대해 심층 <br>리서치를 진행하고, 보고서와 발표자료를 <br>제작해 사내 세미나에서 총 5회 발표했습니다.</p>
+          <div class="project-tags">
+            <span>Deep Research</span>
+            <span>Presentation</span>
+          </div>
+          <a class="project-link" href="https://docs.google.com/document/d/1zbyfvOcT3IRI76YVISKRnalNe4CwpdH64qLY6hQmCdg/edit?usp=sharing" target="_blank" rel="noopener">결과물 보기 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="container">
+    <div class="section-title">Certificates & Language</div>
+    <h2 class="section-heading">자격증 · 어학</h2>
+    <div class="grid-2">
+      <div class="simple-card">
+        <div class="timeline-date">2024.05</div>
+        <h3>新 HSK 5급</h3>
+        <p>한국HSK실시위원회</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="container">
+    <div class="section-title">Self-Introduction</div>
+    <h2 class="section-heading">자기소개서</h2>
+    <div class="intro-block">
+      <h3>성장 과정 및 역량</h3>
+      <p>대학에서 중국학을 전공하며 언어적 전문성을 탄탄히 다졌고, 졸업 전후로 6개월간 기업 인턴십을 수행하며 실무 리서치와 행정 지원 역량을 키웠습니다. 단순히 학문적 지식에 머무르지 않고, AI 산업 트렌드를 읽어내 사내 자산으로 정리하는 실무를 경험하며 비즈니스 감각과 문서 관리 능력을 동시에 키웠습니다.</p>
+
+      <h3>주요 실무 성과</h3>
+      <p>㈜디지털네트웍앤테크놀러지의 행정지원팀과 인사총무팀을 거치며 크게 세 가지 영역에서 성과를 냈습니다. 첫째, RSS 시스템을 통해 매일 글로벌 동향을 모니터링하며 필요한 정보를 선별하는 분석력을 길렀습니다. 둘째, 한·영·중 3개 국어 비즈니스 전문 용어 사전을 직접 구축하고 마스터 시트를 관리하여 사내 커뮤니케이션의 정확도를 높였습니다. 셋째, COEX 등 주요 산업 전시회 현장 리서치를 총 4회 수행하여 기업 데이터를 체계적으로 정리하였으며, AI 인프라·반도체 산업 등 5개 주제에 대한 심층 리서치를 바탕으로 사내 세미나 발표를 총 5회 성공적으로 마쳤습니다. 부서 이동을 거치며 다양한 행정 및 총무 실무 흐름을 빠르게 익히고 지원했습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title">Portfolio</div>
+    <h2 class="section-heading">포트폴리오 · 희망근무조건</h2>
+
+    <div class="portfolio-box" style="margin-bottom: 32px;">
+      <div>
+        <div class="label">첨부 포트폴리오</div>
+        <a class="link" href="https://enna999.kro.kr" target="_blank">enna999.kro.kr</a>
+      </div>
+      <a href="https://enna999.kro.kr" target="_blank" class="btn btn-secondary">사이트 바로가기</a>
+    </div>
+
+    <div class="grid-2">
+      <div class="simple-card">
+        <h3>희망근무조건</h3>
+        <p>희망근무지: 서울 전지역, 경기 전지역<br>희망연봉: 면접 후 결정</p>
+      </div>
+      <div class="simple-card">
+        <h3>지원분야</h3>
+        <p>인사담당자 (인사행정)<br>설문·리서치 (시장조사, 시장분석)<br>해외영업 (중국어)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title">Contact</div>
+    <h2 class="section-heading">연락처</h2>
+    <div class="contact-content">
+      <ul class="contact-list">
+        <li><span>Email</span><a href="mailto:sye030220@gmail.com">sye030220@gmail.com</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/영은-성-1391203b3" target="_blank" rel="noopener">linkedin.com/in/영은-성</a></li>
+        <li><span>포트폴리오</span><a href="https://enna999.kro.kr" target="_blank">enna999.kro.kr</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2026 성영은. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const titles = ['글로벌 리서치 역량을 갖춘 중국어 전문 인재', '인사담당자 · 인사행정', '설문·리서치 · 시장분석', '중국어 해외영업'];
+  let ti = 0, ci = 0, deleting = false;
+  const typingEl = document.getElementById('typing');
+
+  function typeLoop(){
+    const cur = titles[ti];
+    if(!deleting){
+      typingEl.textContent = cur.slice(0, ++ci);
+      if(ci === cur.length){ deleting = true; setTimeout(typeLoop, 1800); return; }
+    } else {
+      typingEl.textContent = cur.slice(0, --ci);
+      if(ci === 0){ deleting = false; ti = (ti + 1) % titles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 35 : 70);
+  }
+  typeLoop();
+</script>
+</body>
+</html>
